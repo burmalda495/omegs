@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>OMEGA — вождение в Камешково</title>
+<meta name="description" content="OMEGA: автошкола в Камешково. Индивидуальное вождение с личным инструктором, запись на занятия и на экзамен, напоминания о занятиях.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OMEGA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+:root{--bg:#fff;--fg:#0a0a0a;--mut:#6f6f6f;--line:#e2e2e2;--card:#f5f5f5;--ibg:#0a0a0a;--ifg:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--fg:#f5f5f5;--mut:#9a9a9a;--line:#262626;--card:#141414;--ibg:#f5f5f5;--ifg:#0a0a0a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#f5f5f5;--mut:#9a9a9a;--line:#262626;--card:#141414;--ibg:#f5f5f5;--ifg:#0a0a0a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Helvetica Neue",Inter,system-ui,Arial,sans-serif;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button,input{font:inherit;color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;display:flex;align-items:center;gap:20px;height:64px;padding:0 clamp(16px,4vw,48px);background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;letter-spacing:.18em;text-decoration:none;color:inherit}
+nav{display:flex;gap:22px;margin-left:auto}
+nav a{color:var(--mut);text-decoration:none;font-size:14px;transition:color .2s}
+nav a:hover{color:var(--fg)}
+.hr{display:flex;gap:10px;align-items:center}
+.btn{border:1px solid var(--fg);background:var(--ibg);color:var(--ifg);padding:13px 26px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;font-weight:600;transition:transform .2s,opacity .2s}
+.btn:hover{transform:translateY(-1px);opacity:.88}
+.btn.sm{padding:8px 16px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.ic{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:16px}
+section{padding:clamp(56px,9vw,120px) clamp(16px,4vw,48px)}
+.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 8px;color:var(--mut);letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+h1{margin:0;font-size:clamp(76px,25vw,300px);line-height:.82;letter-spacing:-.05em;font-weight:900;animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.road{height:3px;margin:28px 0;background:repeating-linear-gradient(90deg,var(--fg) 0 38px,transparent 38px 76px);animation:go 1.6s linear infinite;opacity:.9}
+.lead{max-width:520px;color:var(--mut);font-size:clamp(16px,2vw,20px);margin:0 0 28px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes go{to{background-position:76px 0}}
+h2{font-size:clamp(32px,5vw,56px);letter-spacing:-.03em;margin:0 0 8px;line-height:1.05}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+.steps div{background:var(--bg);padding:28px}
+.steps b{display:block;color:var(--mut);font-size:13px;letter-spacing:.2em;margin-bottom:28px}
+.steps h3{margin:0 0 6px;font-size:20px}
+.steps p{margin:0;color:var(--mut);font-size:15px}
+.sh{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+.mnav{display:flex;align-items:center;gap:8px}
+.mnav strong{min-width:150px;text-align:center;text-transform:capitalize;font-size:18px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.dow{background:var(--card);padding:10px;text-align:center;font-size:12px;letter-spacing:.14em;color:var(--mut);text-transform:uppercase}
+.cell{background:var(--bg);border:0;min-height:104px;padding:10px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:background .2s,color .2s}
+.cell.void{cursor:default}
+.cell:not(.void):not(:disabled):hover{background:var(--ibg);color:var(--ifg)}
+.cell:disabled{cursor:default;color:var(--mut);opacity:.45}
+.cell.off{background:var(--card)}
+.cell .n{font-weight:700;font-size:18px}
+.cell.today .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ibg);color:var(--ifg)}
+.cell:hover.today .n{background:var(--ifg);color:var(--ibg)}
+.cell .i{font-size:12px;opacity:.7}
+.cell .bar{margin-top:auto;height:3px;background:var(--line);position:relative}
+.cell .bar i{position:absolute;inset:0 auto 0 0;background:currentColor}
+.cell .dot{display:inline-block;width:7px;height:7px;border-radius:50%;border:1.5px solid currentColor;margin-left:6px}
+.adm{border:1px solid var(--fg);padding:20px;margin-bottom:24px}
+.adm h3{margin:0 0 4px}
+.adm .rq{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.adm .rq span{flex:1;min-width:200px}
+.muted{color:var(--mut);font-size:14px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:29;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;top:0;bottom:0;right:0;width:min(460px,100%);z-index:30;background:var(--bg);border-left:1px solid var(--line);transform:translateX(102%);transition:transform .4s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet.on{transform:none}
+.sheet header{position:static;height:auto;padding:20px 24px;align-items:flex-start;justify-content:space-between}
+.sheet h3{margin:0;font-size:24px;text-transform:capitalize;letter-spacing:-.02em}
+.list{overflow:auto;padding:0 24px 24px;flex:1}
+.slot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.slot .t{font-weight:700;width:52px;font-variant-numeric:tabular-nums}
+.slot .s{flex:1;color:var(--mut)}
+.slot.busy .s{color:var(--fg)}
+.slot.busy:not(.a) .s{color:var(--mut);text-decoration:line-through}
+.who{flex:1;display:flex;flex-direction:column;min-width:130px}
+.who small{color:var(--mut)}
+.tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--fg);border-radius:99px;padding:3px 10px}
+.tag.pending{border-style:dashed;color:var(--mut);border-color:var(--mut)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.f{flex:1;display:flex;flex-direction:column;gap:8px;min-width:220px}
+input{background:transparent;border:1px solid var(--line);border-radius:10px;padding:11px 14px;width:100%;outline:none;transition:border-color .2s}
+input:focus{border-color:var(--fg)}
+.modal{position:fixed;inset:0;z-index:40;display:none;place-items:center;padding:20px}
+.modal.on{display:grid}
+.modal .box{position:relative;background:var(--bg);border:1px solid var(--fg);padding:28px;width:min(380px,100%);display:flex;flex-direction:column;gap:12px;animation:rise .35s both}
+.err{color:var(--fg);font-size:13px;min-height:18px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ibg);color:var(--ifg);padding:12px 22px;border-radius:99px;opacity:0;transition:.35s;z-index:50;font-size:14px;pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{padding:32px clamp(16px,4vw,48px);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--mut);font-size:14px}
+@media(max-width:640px){nav{display:none}.hr{margin-left:auto}.cell{min-height:64px;padding:6px}.cell .i{display:none}.cell .n{font-size:15px}.cell.today .n{width:26px;height:26px}.dow{padding:8px 0;font-size:10px;letter-spacing:0}.mnav strong{min-width:110px;font-size:16px}}
+[hidden]{display:none!important}
+.pill{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:6px 12px;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seg{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;border-radius:99px;padding:8px 12px;cursor:pointer;font-size:14px;transition:.2s}
+.seg button.on{background:var(--ibg);color:var(--ifg)}
+.cfg{padding:4px 0 18px;display:flex;flex-direction:column;gap:12px}
+.hrs{display:flex;align-items:center;gap:10px;color:var(--mut);flex-wrap:wrap}
+select{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit}
+.lnk{background:none;border:0;padding:0;color:var(--mut);text-decoration:underline;cursor:pointer;text-align:left;font-size:14px}
+.pad{padding:6px 0 10px}
+.note{color:var(--mut);font-size:14px;margin:0}
+.cell.exam{background:repeating-linear-gradient(135deg,var(--card) 0 6px,var(--bg) 6px 12px)}
+.cell.exam .i{font-weight:700;opacity:1}
+.adm .rq .tag{margin-right:4px}
+@media(max-width:640px){.pill{max-width:120px}.cell.exam .i,.cell.full .i{display:block;font-size:9px}}
+:root{--red:#d92d20}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--red:#ff6b5e}}
+:root[data-theme="dark"]{--red:#ff6b5e}
+.red{color:var(--red)!important}
+.cell.full{background:color-mix(in srgb,var(--red) 12%,var(--bg))}
+.cell.full .i,.cell.full:not(.today) .n{color:var(--red)}
+.cell.full .bar i{background:var(--red)}
+.pill{background:transparent;cursor:pointer}
+.rq{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.rq>span:first-child{flex:1;min-width:200px}
+.tabs{max-width:320px;margin:24px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 32px}
+.stats div{background:var(--bg);padding:22px}
+.stats b{display:block;font-size:clamp(44px,9vw,80px);line-height:1;letter-spacing:-.04em}
+.stats span{color:var(--mut);font-size:13px}
+#profile{display:none;min-height:70vh}
+body.vp #profile{display:block}
+body.vp .hero,body.vp #how,body.vp #schedule,body.vp #app{display:none}
+.ac{position:relative}
+.dd{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;background:var(--bg);border:1px solid var(--fg);border-radius:10px;overflow:hidden}
+.dd button{display:block;width:100%;text-align:left;padding:11px 14px;border:0;background:transparent;cursor:pointer}
+.dd button:hover{background:var(--card)}
+/* ===== новый дизайн: круглее, объёмнее, игрушечнее ===== */
+:root{--bg:#efefec;--card:#fff;--line:#dcdcd6;--mut:#6b6b66;--sh:#0a0a0a;--k:#0a0a0a;--kf:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d0d;--card:#1a1a1a;--line:#2e2e2e;--mut:#a3a3a3;--sh:#5c5c5c;--k:#000;--kf:#fff}}
+:root[data-theme="dark"]{--bg:#0d0d0d;--card:#1a1a1a;--line:#2e2e2e;--mut:#a3a3a3;--sh:#5c5c5c;--k:#000;--kf:#fff}
+html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+body{font-family:Rubik,ui-rounded,"SF Pro Rounded",system-ui,"Helvetica Neue",Arial,sans-serif;overflow-x:clip}
+::selection{background:var(--fg);color:var(--bg)}
+h1{font-weight:900;letter-spacing:-.045em}
+h2{font-weight:800;letter-spacing:-.035em}
+section{padding-left:clamp(18px,4vw,56px);padding-right:clamp(18px,4vw,56px)}
+body>header{top:calc(env(safe-area-inset-top,0px) + 8px);margin:8px clamp(10px,2vw,24px) 0;height:60px;padding:0 10px 0 22px;border:1.5px solid var(--fg);border-radius:999px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo::before{content:"";display:inline-block;width:.62em;height:.62em;border-radius:50%;background:currentColor;margin-right:.55em;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.logo:hover::before{transform:scale(1.5)}
+nav a{padding:8px 14px;border-radius:99px;transition:background .2s,color .2s}
+nav a:hover{background:var(--card)}
+.ic{border:1.5px solid var(--fg);background:var(--card);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.ic:hover{transform:rotate(-12deg) scale(1.08)}
+.pill{border:1.5px solid var(--fg);background:var(--card);font-weight:600}
+.btn{border:2px solid var(--fg);box-shadow:0 4px 0 var(--sh);font-weight:700;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--sh);opacity:1}
+.btn.sm{box-shadow:0 3px 0 var(--sh)}
+.btn.sm:hover{box-shadow:0 5px 0 var(--sh)}
+.btn:active,.btn.sm:active{transform:translateY(3px);box-shadow:0 1px 0 var(--sh)}
+.btn.ghost{background:var(--card);color:var(--fg);border-color:var(--fg)}
+input,select{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 16px;transition:border-color .2s,box-shadow .2s}
+select{padding:9px 12px}
+input:focus,select:focus{border-color:var(--fg);box-shadow:0 0 0 4px color-mix(in srgb,var(--fg) 12%,transparent)}
+.hero{margin:12px clamp(10px,2vw,24px);padding:clamp(100px,9vw,124px) clamp(22px,5vw,72px) clamp(32px,5vw,64px);min-height:84vh;border:0;border-radius:clamp(28px,4vw,48px);background:var(--k);color:var(--kf);position:relative;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.hero::before{content:"";position:absolute;right:-12%;bottom:-30%;width:min(56vw,620px);aspect-ratio:1;border-radius:50%;border:2px dashed rgba(255,255,255,.16);animation:spin 60s linear infinite;pointer-events:none}
+.hero::after{content:"";position:absolute;right:16%;bottom:14%;width:clamp(36px,5vw,60px);aspect-ratio:1;border-radius:50%;background:var(--kf);animation:bob 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{50%{transform:translateY(-22px)}}
+.hl{position:relative;z-index:1}
+.hero .eyebrow{display:inline-block;border:1.5px solid rgba(255,255,255,.35);border-radius:99px;padding:6px 16px;color:var(--kf);margin-bottom:18px}
+.hero .lead{color:rgba(255,255,255,.72)}
+.road{height:6px;border-radius:99px;background:repeating-linear-gradient(90deg,var(--kf) 0 38px,transparent 38px 76px)}
+.hero .btn{background:var(--kf);color:#0a0a0a;border-color:var(--kf);box-shadow:0 4px 0 #7a7a7a}
+.hero .btn:hover{box-shadow:0 6px 0 #7a7a7a}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chips span{padding:9px 16px;border-radius:99px;font-weight:600;font-size:14px;background:var(--kf);color:#0a0a0a;transform:rotate(-3deg);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.chips span:nth-child(2){background:transparent;color:var(--kf);border:1.5px solid var(--kf);transform:rotate(2deg)}
+.chips span:nth-child(3){background:#2a2a2a;color:var(--kf);transform:rotate(-1.5deg)}
+.chips span:hover{transform:rotate(0) scale(1.06)}
+.badge{position:absolute;z-index:2;top:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);width:clamp(84px,11vw,132px);aspect-ratio:1;display:grid;place-items:center;color:var(--kf);text-decoration:none}
+.badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 20s linear infinite}
+.badge text{font-size:11.5px;font-weight:700;fill:currentColor;text-transform:uppercase}
+.badge span{width:40%;aspect-ratio:1;border-radius:50%;background:var(--kf);color:#0a0a0a;display:grid;place-items:center;font-size:clamp(16px,2vw,24px);font-weight:800;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.badge:hover span{transform:scale(1.18) rotate(90deg)}
+.mqw{overflow:hidden;padding:18px 0}
+.mq{width:calc(100% + 40px);margin:0 -20px;transform:rotate(-1.2deg);background:var(--ibg);color:var(--ifg);padding:14px 0;white-space:nowrap}
+.mt{display:inline-flex;animation:mq 28s linear infinite}
+.mt span{padding:0 18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.steps{gap:14px;background:none;border:0}
+.steps div{background:var(--card);border:1.5px solid var(--fg);border-radius:30px;padding:26px;box-shadow:0 6px 0 var(--sh);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.steps div:hover{transform:translateY(-6px) rotate(-.8deg)}
+.steps div:nth-child(2):hover{transform:translateY(-6px) rotate(.8deg)}
+.steps b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--ibg);color:var(--ifg);letter-spacing:0;margin-bottom:34px;font-size:14px}
+.cal{gap:8px;background:none;border:0}
+.dow{background:none;padding:6px 0}
+.cell{background:var(--card);border:1.5px solid var(--line);border-radius:20px;transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .2s,color .2s,border-color .2s}
+.cell.void{background:none;border:0}
+.cell:not(.void):not(:disabled):hover{transform:translateY(-3px) rotate(-1deg);border-color:var(--fg)}
+.cell.off{background:transparent;border-style:dashed}
+.cell.exam{border-color:var(--fg)}
+.cell.full{background:color-mix(in srgb,var(--red) 12%,var(--card));border-color:color-mix(in srgb,var(--red) 50%,var(--line))}
+.cell.today{border:2px solid var(--fg)}
+.cell .bar{border-radius:99px;overflow:hidden;height:5px}
+.adm{background:var(--card);border:1.5px solid var(--fg);border-radius:28px;box-shadow:0 6px 0 var(--sh);padding:22px;margin-bottom:22px}
+.stats{gap:12px;background:none;border:0}
+.stats div{background:var(--card);border:1.5px solid var(--fg);border-radius:28px;box-shadow:0 5px 0 var(--sh)}
+.seg{background:var(--card);border:1.5px solid var(--fg)}
+.seg button{font-weight:600;transition:background .25s,color .25s}
+.tag{background:var(--card)}
+.scrim{backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sheet{top:calc(10px + env(safe-area-inset-top,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));right:10px;width:min(460px,calc(100% - 20px));padding:0;border:1.5px solid var(--fg);border-radius:32px;background:var(--card);transform:translateX(calc(100% + 24px));box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.sheet.on{transform:none}
+.sheet header{background:none;border:0}
+.list{padding:0 18px 18px}
+.slot{border:0;background:var(--bg);border-radius:20px;padding:12px 14px;margin-bottom:8px}
+.slot .t{width:auto;background:var(--ibg);color:var(--ifg);border-radius:99px;padding:3px 12px;font-size:14px}
+.slot.busy:not(.a){opacity:.6}
+.modal{background:rgba(0,0,0,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.modal .box{background:var(--card);border:2px solid var(--fg);border-radius:32px;box-shadow:0 8px 0 var(--sh)}
+.dd{border:2px solid var(--fg);border-radius:18px;background:var(--card);box-shadow:0 6px 0 var(--sh)}
+.toast{border:2px solid var(--fg);box-shadow:0 6px 0 var(--sh)}
+footer{margin:16px clamp(10px,2vw,24px);border:0;border-radius:36px;background:var(--k);color:rgba(255,255,255,.75);padding:30px clamp(22px,4vw,48px);box-shadow:0 0 0 1px var(--line)}
+@media(max-width:640px){body>header{height:56px;padding:0 8px 0 16px}.hero{padding-top:112px;min-height:78vh}.cal{gap:5px}.cell{border-radius:14px}.mt span{font-size:12px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn.ghost{background:transparent;color:var(--kf);border-color:var(--kf);box-shadow:0 4px 0 rgba(255,255,255,.25)}
+body.vp .mqw{display:none}
+.modal .box h3{line-height:1.25}
+.hero h1{font-size:clamp(56px,18.5vw,250px)}
+.mine{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;margin:0 0 24px;padding:14px 22px;border-radius:24px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.3);color:var(--kf);width:fit-content;max-width:100%}
+.mine small{display:block;opacity:.65;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.mine b{font-size:20px;margin-right:8px}
+#app .steps b{display:inline-block;width:auto;height:auto;padding:12px 30px;border-radius:99px;font-size:22px;font-weight:800;letter-spacing:.08em;line-height:1.1;margin-bottom:26px}
+:root{--blue:#2563eb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#6ea8ff}}
+:root[data-theme="dark"]{--blue:#6ea8ff}
+.cell.my{background:color-mix(in srgb,var(--blue) 16%,var(--card));border-color:var(--blue)}
+.cell.my .i,.cell.my:not(.today) .n{color:var(--blue);opacity:1}
+.cell.my .bar i{background:var(--blue)}
+.ic{position:relative}
+.bd{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--red);color:#fff;font:800 11px/19px sans-serif;text-align:center;font-style:normal}
+html{overflow-x:hidden;scroll-behavior:auto}
+body{overflow-x:clip;max-width:100vw;overscroll-behavior-x:none;touch-action:pan-y}
+*,*::before,*::after{animation:none!important}
+.btn,.cell,.steps div,.blocks span,.ic{transition:background .2s,color .2s,border-color .2s!important}
+.btn:hover,.btn:active,.cell:hover,.cell:not(.void):not(:disabled):hover,.cell:hover.today,.steps div:hover,.blocks span:hover,.ic:hover:not(:disabled),.logo:hover::before{transform:none!important}
+.cal{grid-template-columns:repeat(7,minmax(0,1fr))}
+.cell{min-width:0;overflow:hidden}
+.cell .i{overflow-wrap:anywhere}
+.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 8px;max-width:1000px}
+.lk{display:flex;align-items:center;justify-content:center;text-align:center;min-height:58px;padding:10px 14px;border-radius:18px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:var(--kf);font:800 15px/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+.lk:hover{background:var(--kf);color:var(--k)}
+@media(max-width:900px){.links{grid-template-columns:repeat(2,minmax(0,1fr))}.links>:last-child:nth-child(odd){grid-column:1/-1}}
+#profile{position:relative}
+.btn.out{position:absolute;top:22px;right:clamp(16px,4vw,48px);background:var(--red);color:#fff;box-shadow:0 3px 0 color-mix(in srgb,var(--red) 55%,#000)}
+#my .adm{margin-top:24px}
+body.vp #my{display:none}
+body>section{display:none!important}
+body[data-v="home"]>#home{display:flex!important}
+body[data-v="my"]>#my,body[data-v="schedule"]>#schedule,body[data-v="how"]>#how,body[data-v="app"]>#app,body[data-v="profile"]>#profile{display:block!important}
+.back{display:inline-flex;align-items:center;margin:0 0 26px;padding:9px 18px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--fg);font:800 14px/1 inherit;font-family:inherit;cursor:pointer}
+.back:hover{border-color:var(--fg)}
+nav a.on{color:var(--fg);background:var(--line)}
+header .logo{flex:none}
+.hr{min-width:0;gap:10px}
+.pill{flex:0 1 auto;min-width:0}
+.bd{top:-3px;right:-3px}
+.toast{top:calc(env(safe-area-inset-top,0px) + 82px);bottom:auto;transform:translate(-50%,-14px)}
+.toast.on{transform:translate(-50%,0)}
+.modal .box{max-height:calc(100vh - 40px);overflow:auto}
+#profile{padding-top:84px}
+#profile .btn.out{top:22px}
+@media(max-width:1100px){nav{display:none}.hr{margin-left:auto}.stamp{display:none}}
+@media(max-width:560px){header{gap:8px;padding:0 8px 0 14px}.hr{gap:6px}.ic{width:36px;height:36px}.pill{max-width:88px;padding:7px 10px}.logo{letter-spacing:.08em}}
+</style>
+</head>
+<body data-v="home">
+<header>
+  <a class="logo" href="#home" data-c="brand">OMEGA</a>
+  <nav id="nv"></nav>
+  <div class="hr"><button class="ic" id="bell" aria-label="Уведомления" hidden>🔔<i class="bd" id="bd" hidden></i></button><button class="ic" id="theme" aria-label="Сменить тему">◐</button><button class="pill" id="who" hidden></button><button class="btn sm" id="auth">Войти</button></div>
+</header>
+
+<section id="profile">
+  <button class="back" data-page="home">← На главную</button>
+  <button class="btn sm out" data-act="logout">Выйти</button>
+  <p class="eyebrow" id="pe">Личный кабинет</p>
+  <h2 id="pn"></h2>
+  <p class="muted" id="pp"></p>
+  <div class="seg tabs"><button class="on" data-pt="rec">Записи</button><button data-pt="info">Данные</button></div>
+  <div id="pc"></div>
+</section>
+
+<section class="hero" id="home">
+  <a class="badge" href="#schedule" aria-label="К расписанию"><svg viewBox="0 0 140 140"><defs><path id="bc" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#bc" textLength="320" lengthAdjust="spacing"><tspan>ВОЖДЕНИЕ ✦ </tspan><tspan data-c="city">Камешково</tspan><tspan> ✦ ЛИЧНЫЙ ИНСТРУКТОР ✦ </tspan></textPath></text></svg><span>↓</span></a>
+  <div class="hl">
+    <p class="eyebrow">Индивидуальное вождение · <span data-c="city">Камешково</span></p>
+    <h1 data-c="brand">OMEGA</h1>
+    <div class="road"></div>
+    <p class="lead">Практика за рулём с личным инструктором. Зарегистрируйтесь и выберите инструктора, а он запишет вас на удобное время.</p>
+    <div class="mine" id="mine" hidden></div>
+    <div class="links" id="cta"></div>
+  </div>
+</section>
+
+
+<section id="my">
+  <button class="back" data-page="home">← На главную</button>
+  <h2>Мои записи</h2>
+  <p class="muted">Ваши занятия и заявки в одном месте.</p>
+  <div class="adm" id="adm"></div>
+</section>
+
+<section id="schedule">
+  <button class="back" data-page="home">← На главную</button>
+  <div class="sh">
+    <div><h2>Расписание</h2><p class="muted" id="hint">Нажмите на день, чтобы увидеть свободные окна.</p></div>
+    <div class="mnav" id="mnav"><button class="ic" id="prev" aria-label="Назад">←</button><strong id="mt"></strong><button class="ic" id="next" aria-label="Вперёд">→</button></div>
+  </div>
+  <div class="adm" id="gate" hidden></div>
+  <div class="cal" id="cal"></div>
+</section>
+
+<section id="how">
+  <button class="back" data-page="home">← На главную</button>
+  <h2>Как это работает</h2>
+  <p class="muted">Три шага, без звонков и переписок.</p>
+  <div class="steps">
+    <div><b>01</b><h3>Зарегистрируйтесь</h3><p>Укажите имя, фамилию и выберите своего инструктора.</p></div>
+    <div><b>02</b><h3>Инструктор запишет вас</h3><p>Он сам назначит день и время. Адрес, откуда вас забрать, берётся из профиля, его можно поменять.</p></div>
+    <div><b>03</b><h3>Получите уведомление</h3><p>Придёт сообщение о записи и напоминание за час до начала.</p></div>
+  </div>
+</section>
+
+<section id="app">
+  <button class="back" data-page="home">← На главную</button>
+  <h2>Приложение на телефон</h2>
+  <p class="muted">Сайт можно поставить на главный экран, и он будет открываться как обычное приложение.</p>
+  <div class="acts" style="margin-top:20px"><button class="btn" id="inst" hidden>Установить приложение</button></div>
+  <div class="steps"><div><b>IPHONE</b><h3>Safari</h3><p>Откройте сайт, нажмите «Поделиться» и выберите «На экран Домой».</p></div><div><b>ANDROID</b><h3>Chrome</h3><p>Меню ⋮, затем «Установить приложение», либо кнопка выше.</p></div></div>
+</section>
+<footer><span><span data-c="brand">OMEGA</span> · автошкола</span><span><span id="fp"><span data-c="phone"></span> · </span>г. <span data-c="city">Камешково</span></span></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" aria-hidden="true">
+  <header><div><h3 id="st"></h3><p class="muted" id="ss" style="margin:4px 0 0"></p></div><button class="ic" id="close" aria-label="Закрыть">✕</button></header>
+  <div class="list" id="list"></div>
+</aside>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <div class="seg"><button id="rc" class="on">Клиент</button><button id="ri">Инструктор</button></div>
+    <h3 id="mh" style="margin:0">Вход</h3>
+    <input id="lg" placeholder="Фамилия Имя" autocomplete="name">
+    <input id="ph" type="tel" placeholder="Телефон" hidden>
+    <input id="hh" type="number" inputmode="numeric" min="0" max="999" placeholder="Сколько часов вы уже откатали? (0, если нет)" hidden>
+    <div class="ac" id="acw" hidden><input id="ins" placeholder="Ваш инструктор: начните вводить имя" autocomplete="off"><div class="dd" id="dd" hidden></div></div>
+    <input id="pw" type="password" inputmode="numeric" maxlength="9" placeholder="Пароль" autocomplete="off">
+    <div class="err" id="err"></div>
+    <p class="muted" id="dm" style="margin:0"></p>
+    <div class="acts"><button class="btn sm" id="login">Войти</button><button class="btn sm ghost" id="mc">Отмена</button></div>
+    <button class="lnk" id="sw"></button>
+  </div>
+</div>
+<div class="modal" id="car"><div class="box"><h3 style="margin:0">Какая у вас машина?</h3><p class="muted" style="margin:0">Её увидят ваши ученики на главной странице.</p><input id="cn" placeholder="Например: Lada Granta" maxlength="40"><div class="err" id="cerr"></div><div class="acts"><button class="btn sm" id="cs">Сохранить</button><button class="btn sm ghost" id="cl">Позже</button></div></div></div>
+<div class="modal" id="lo"><div class="box" style="text-align:center"><h3 style="margin:0">Вы уверены, что хотите выйти?</h3><div class="acts" style="justify-content:center"><button class="btn sm" id="lo-y">Да, хочу</button><button class="btn sm ghost" id="lo-n">Нет, остаться</button></div></div></div>
+<div class="modal" id="nt"><div class="box" style="max-height:80vh;overflow:auto"><h3 style="margin:0">Уведомления</h3><div id="nl"></div><div class="acts"><button class="btn sm ghost" id="nr">Показать пример напоминания</button><button class="btn sm" id="nc">Закрыть</button></div></div></div>
+<div class="modal" id="ad"><div class="box"><h3 style="margin:0">Изменить адрес</h3><p class="muted" id="adt" style="margin:0"></p><input id="adi" placeholder="Откуда вас забрать"><div class="err" id="aerr"></div><div class="acts"><button class="btn sm" id="as">Сохранить</button><button class="btn sm ghost" id="ac">Отмена</button></div></div></div>
+<div class="modal" id="cf"><div class="box" style="text-align:center"><h3 style="margin:0">Отменить запись?</h3><p class="muted" id="cfp" style="margin:0"></p><div class="acts" style="justify-content:center"><button class="btn sm" id="cf-y">Да, отменить</button><button class="btn sm ghost" id="cf-n">Нет, оставить</button></div></div></div>
+<div class="modal" id="ai1"><div class="box" style="text-align:center"><h3 style="margin:0">Вы точно хотите добавить инструктора?</h3><div class="acts" style="justify-content:center"><button class="btn sm" id="ai1y">Да, хочу</button><button class="btn sm ghost" id="ai1n">Нет, не надо</button></div></div></div>
+<div class="modal" id="ai2"><div class="box"><h3 style="margin:0">Новый инструктор</h3><input id="an" placeholder="Логин инструктора: Фамилия Имя" autocomplete="off"><input id="aph" type="tel" placeholder="Телефон инструктора" autocomplete="off"><input id="ap" type="password" inputmode="numeric" maxlength="8" placeholder="Придумайте пароль для инструктора: 8 цифр" autocomplete="off"><div class="err" id="aer"></div><div class="acts"><button class="btn sm" id="ai2y">Добавить</button><button class="btn sm ghost" id="ai2n">Отмена</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== НАСТРОЙКИ САЙТА: меняйте только текст в кавычках ===== */
+const CONFIG={
+  brand:'OMEGA',                  // название сайта
+  city:'Камешково',               // город
+  phone:'',                       // телефон автошколы (показывается внизу сайта; пусто — не показывается)
+  instructors:[                   // инструкторы из настроек; остальных добавляет в профиле владелец (owner:true)
+    // пароль хранится не открытым текстом, а в виде salt и hash (как поменять — в README, файл tools/hash_password.py)
+    {name:'Низина Елена',phone:'',owner:true,salt:'6e37810b91bdbb68068dd06de12dd192',hash:'bc72e99777c0f149d32da2bba4e2f6b5490636f1eb8e4ce2324bf0bc565ae9a1'}
+  ]
+};
+/* ============================================================ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const day=k=>new Date(k+'T00:00');
+const KEY='omega-v1';
+const today=new Date();today.setHours(0,0,0,0);
+const addD=o=>{const d=new Date(today);d.setDate(d.getDate()+o);return iso(d)};
+const canc=b=>new Date(b.date+'T'+b.time).getTime()>Date.now();
+const cb=b=>canc(b)?`<button class="btn sm ghost" data-act="cancel" data-id="${b.id}">Отменить</button>`:'';
+const rng=t=>t+'–'+pad(+t.slice(0,2)+1)+':00';
+const fd=(k,o)=>day(k).toLocaleDateString('ru-RU',o||{weekday:'short',day:'numeric',month:'long'});
+const SB={pending:'Ожидает',confirmed:'Подтверждена',new:'Ожидает',accepted:'Принята',declined:'Отклонена'};
+const st={u:[],b:[],x:[],days:{},me:null,view:new Date(today.getFullYear(),today.getMonth(),1),sel:null,slot:null,role:'client',reg:false};
+const note=(uid,text)=>{st.n.unshift({id:'n'+Date.now()+Math.random().toString(36).slice(2,6),uid,text,t:Date.now(),read:false})};
+const unr=()=>st.me?st.n.filter(n=>n.uid===st.me.id&&!n.read).length:0;
+const inst=()=>!!st.me&&st.me.role==='instructor';
+const own=()=>st.me?(inst()?st.me.id:st.me.iid):null;
+const B=()=>st.b.filter(b=>b.iid===own()),X=()=>st.x.filter(x=>x.iid===own());
+const cfg=k=>st.days[own()+'|'+k]||{type:day(k).getDay()===0?'off':'work',from:8,to:20};
+const range=c=>{const a=[];if(c.type==='work')for(let h=c.from;h<c.to;h++)a.push(pad(h)+':00');return a};
+
+let d0=null;try{d0=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!d0||!d0.u)d0={u:[],b:[],x:[],days:{},n:[]};
+st.u=[...CONFIG.instructors.map((x,i)=>Object.assign({id:'i'+i,role:'instructor',cfg:true},x)),...d0.u.filter(u=>u.role==='client'||(u.role==='instructor'&&!u.cfg))];st.b=d0.b;st.x=d0.x;st.days=d0.days;st.cars=d0.cars||{};st.n=d0.n||[];st.u.forEach(u=>{if(st.cars[u.id])u.car=st.cars[u.id]});st.me=st.u.find(u=>u.id===d0.meId)||null;
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({u:st.u,b:st.b,x:st.x,days:st.days,cars:st.cars,n:st.n,meId:st.me&&st.me.id}))}catch(e){}};
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2800)}
+
+function renderCal(){
+  const v=st.view,y=v.getFullYear(),m=v.getMonth(),I=inst();
+  const g=gate();$('gate').hidden=!g;$('gate').innerHTML=g;$('cal').hidden=!!g;$('mnav').hidden=!!g;if(g)return;
+  $('mt').textContent=v.toLocaleDateString('ru-RU',{month:'long',year:'numeric'});
+  const lead=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate();
+  let h=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(x=>`<div class="dow">${x}</div>`).join('');
+  for(let i=0;i<lead;i++)h+='<div class="cell void"></div>';
+  for(let d=1;d<=dim;d++){
+    const dt=new Date(y,m,d),k=iso(dt),c=cfg(k),past=dt<today;
+    const bs=B().filter(b=>b.date===k),n=range(c).length,free=n-bs.length;
+    const pend=I&&(bs.some(b=>b.status==='pending')||X().some(x=>x.date===k&&x.status==='new'));
+    const full=c.type==='work'&&n>0&&free<=0;let info=c.type==='off'?'Выходной':c.type==='exam'?'Экзамен':full?(I?'Всё занято':'Записей нет'):I?(bs.length?bs.length+' зап.':'Свободно'):free+' своб.';
+    if(pend)info+='<span class="dot" title="Есть новые заявки"></span>';
+    const my=!I&&st.me&&(bs.some(b=>b.uid===st.me.id)||(c.type==='exam'&&X().some(x=>x.date===k&&x.uid===st.me.id&&x.status==='accepted')));if(my)info='Вы записаны';
+    const cls=['cell',c.type==='off'?'off':'',c.type==='exam'?'exam':'',full?'full':'',my?'my':'',+dt===+today?'today':''].join(' ');
+    h+=`<button class="${cls}" data-d="${k}" ${past||(c.type==='off'&&!I)?'disabled':''}><span class="n">${d}</span><span class="i">${info}</span>${c.type==='work'&&n?`<span class="bar"><i style="width:${Math.min(100,bs.length/n*100)}%"></i></span>`:''}</button>`;
+  }
+  $('cal').innerHTML=h;
+  $('prev').disabled=(y===today.getFullYear()&&m===today.getMonth());
+}
+
+function renderAdm(){
+  const a=$('adm');a.hidden=false;
+  if(!st.me){a.innerHTML='<h3>Мои записи</h3><p class="muted" style="margin:0 0 14px">Войдите, чтобы увидеть свои записи.</p><button class="btn sm" data-act="login">Войти</button>';return}
+  if(!inst()&&st.me.ok!=='active'){a.innerHTML='<h3>Мои записи</h3><p class="muted" style="margin:0">Записи появятся, когда инструктор примет вашу заявку.</p>';return}
+  const bk=(x,btn)=>`<div class="rq"><span><b>${esc(x.name)}</b> · ${esc(x.phone)}<br><small class="muted">${fd(x.date)}, ${x.time} · ${esc(x.addr)}</small></span>${btn}</div>`;
+  const ex=(x,btn)=>`<div class="rq"><span><span class="tag">Экзамен</span> <b>${esc(x.name)}</b> · ${esc(x.phone)}<br><small class="muted">${fd(x.date)}${x.note?' · '+esc(x.note):''}</small></span>${btn}</div>`;
+  if(inst()){
+    const p=B().filter(b=>b.status==='pending').sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time)),q=X().filter(x=>x.status==='new'),r=st.u.filter(u=>u.role==='client'&&u.iid===st.me.id&&u.ok==='pending');
+    const ur=u=>`<div class="rq"><span><span class="tag">Новый ученик</span> <b>${esc(u.name)}</b> · ${esc(u.phone)}<br><small class="muted">хочет ездить с вами</small></span><button class="btn sm" data-act="uok" data-id="${u.id}">Принять</button><button class="btn sm ghost" data-act="uno" data-id="${u.id}">Отклонить</button></div>`;
+    a.innerHTML=`<h3>Панель инструктора</h3><p class="muted" style="margin:0 0 8px">${p.length+q.length+r.length?'Новых заявок: '+(p.length+q.length+r.length):'Новых заявок нет'}. Нажмите на любой день, чтобы задать часы, отметить экзамен, а у свободного часа нажмите «Назначить».</p>`+
+      r.map(ur).join('')+p.map(b=>bk(b,`<button class="btn sm" data-act="ok" data-id="${b.id}">Принять</button><button class="btn sm ghost" data-act="del" data-id="${b.id}">Отклонить</button>`)).join('')+
+      q.map(x=>ex(x,`<button class="btn sm" data-act="xok" data-id="${x.id}">Принять</button><button class="btn sm ghost" data-act="xno" data-id="${x.id}">Отклонить</button>`)).join('');
+  }else{
+    const mb=st.b.filter(b=>b.uid===st.me.id&&day(b.date)>=today).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time)),mx=st.x.filter(x=>x.uid===st.me.id&&day(x.date)>=today);
+    a.innerHTML=`<h3>Мои записи</h3><p class="muted" style="margin:0 0 8px">${mb.length+mx.length?'':'Пока нет записей: вас записывает инструктор.'}</p>`+
+      mb.map(b=>bk(b,`<button class="btn sm ghost" data-act="addr" data-id="${b.id}">Изменить адрес</button>${cb(b)}`)).join('')+
+      mx.map(x=>ex(x,`<span class="tag ${x.status==='new'?'pending':''}">${SB[x.status]}</span><button class="btn sm ghost" data-act="xdel" data-id="${x.id}">Отменить</button>`)).join('');
+  }
+}
+
+function cfgHtml(k){
+  const c=cfg(k),o=(a,b,v)=>{let s='';for(let h=a;h<=b;h++)s+=`<option value="${h}" ${h===v?'selected':''}>${pad(h)}:00</option>`;return s};
+  return `<div class="cfg"><div class="seg">${[['work','Работаю'],['exam','Экзамен'],['off','Выходной']].map(([v,l])=>`<button class="${c.type===v?'on':''}" data-act="type" data-v="${v}">${l}</button>`).join('')}</div>${c.type==='work'?`<div class="hrs">Принимаю с <select id="hf">${o(6,21,c.from)}</select> до <select id="ht">${o(7,22,c.to)}</select></div>`:''}</div>`;
+}
+
+function examHtml(k,xs,I){
+  if(I)return `<p class="note pad">День экзамена: вождения нет. Запишите ученика на экзамен, адрес не нужен.</p><div class="f" style="margin-bottom:14px"><input id="xn" list="stl2" placeholder="Логин ученика: Фамилия Имя" autocomplete="off"><datalist id="stl2">${st.u.filter(u=>u.role==='client'&&u.iid===st.me.id&&u.ok==='active').map(u=>`<option value="${esc(u.name)}">`).join('')}</datalist><div class="acts"><button class="btn sm" data-act="xbook">Записать на экзамен</button></div></div><p class="note pad">Записанные и заявки:</p>`+(xs.map(x=>`<div class="slot"><div class="who"><b>${esc(x.name)}</b><small>${esc(x.phone)}${x.note?' · '+esc(x.note):''}</small></div><span class="tag ${x.status==='new'?'pending':''}">${SB[x.status]}</span><div class="acts">${x.status==='new'?`<button class="btn sm" data-act="xok" data-id="${x.id}">Принять</button><button class="btn sm ghost" data-act="xno" data-id="${x.id}">Отклонить</button>`:`<button class="btn sm ghost" data-act="xdel" data-id="${x.id}">Удалить</button>`}</div></div>`).join('')||'<p class="muted">Заявок пока нет.</p>');
+  const mine=st.me&&xs.find(x=>x.uid===st.me.id);
+  let h='<p class="note pad">В этот день экзамен, записи на вождение нет. Если готовы сдавать, оставьте заявку: инструктор решит сам.</p>';
+  if(!st.me)return h+'<button class="btn sm" data-act="login">Войти и оставить заявку</button>';
+  if(mine)return h+`<div class="slot"><span class="s">${mine.status==='accepted'?'Вы записаны на экзамен':'Ваша заявка'}</span><span class="tag ${mine.status==='new'?'pending':''}">${SB[mine.status]}</span></div>`;
+  return h+`<div class="f"><input id="fx" placeholder="Комментарий (необязательно)"><div class="acts"><button class="btn sm" data-act="xsend">Хочу на экзамен</button></div></div>`;
+}
+
+function renderSheet(){
+  const k=st.sel,sh=$('sheet');
+  $('scrim').classList.toggle('on',!!k);sh.classList.toggle('on',!!k);sh.setAttribute('aria-hidden',k?'false':'true');
+  if(!k)return;
+  const c=cfg(k),I=inst(),bs=B().filter(b=>b.date===k),xs=X().filter(x=>x.date===k);
+  const times=[...new Set([...range(c),...(I?bs.map(b=>b.time):[])])].sort();
+  $('st').textContent=fd(k,{weekday:'long',day:'numeric',month:'long'});
+  const fr=range(c).length-bs.length;$('ss').textContent=c.type==='exam'?'День экзамена':c.type==='off'?'Выходной':I?`Записей: ${bs.length} · свободно: ${fr}`:fr>0?`Свободно окон: ${fr}`:'Записей нет';
+  $('ss').classList.toggle('red',c.type==='work'&&range(c).length>0&&fr<=0);
+  let h=I?cfgHtml(k):'';
+  if(c.type==='exam')h+=examHtml(k,xs,I);
+  h+=times.map(t=>{
+    const b=bs.find(x=>x.time===t);
+    if(b){
+      if(I)return `<div class="slot busy a"><span class="t">${rng(t)}</span><div class="who"><b>${esc(b.name)}</b><small>${esc(b.phone)}</small><small>📍 ${esc(b.addr)}${b.chg?' · адрес изменён':''}</small></div><span class="tag confirmed">Запись</span><div class="acts">${b.status==='pending'?`<button class="btn sm" data-act="ok" data-id="${b.id}">Принять</button>`:''}<button class="btn sm ghost" data-act="del" data-id="${b.id}">Удалить</button></div></div>`;
+      if(st.me&&b.uid===st.me.id)return `<div class="slot busy a"><span class="t">${rng(t)}</span><div class="who"><b>Вы записаны</b><small>📍 ${esc(b.addr)}</small></div><button class="btn sm ghost" data-act="addr" data-id="${b.id}">Изменить адрес</button>${cb(b)}</div>`;
+      return `<div class="slot busy"><span class="t">${rng(t)}</span><span class="s">Занято</span></div>`;
+    }
+    if(st.slot===t&&I)return `<div class="slot"><span class="t">${rng(t)}</span><div class="f"><input id="fn" list="stl" placeholder="Логин ученика: Фамилия Имя" autocomplete="off"><datalist id="stl">${st.u.filter(u=>u.role==='client'&&u.iid===st.me.id&&u.ok==='active').map(u=>`<option value="${esc(u.name)}">`).join('')}</datalist><input id="fa" placeholder="Адрес (если пусто, возьмём из профиля ученика)"><div class="acts"><button class="btn sm" data-act="send">Назначить</button><button class="btn sm ghost" data-act="unpick">Отмена</button></div></div></div>`;
+    return `<div class="slot"><span class="t">${rng(t)}</span><span class="s">Свободно</span>${I?`<button class="btn sm" data-act="pick" data-t="${t}">Назначить</button>`:''}</div>`;
+  }).join('');
+  $('list').innerHTML=h;
+  const f=$('fn')||$('fa');if(f)f.focus();
+}
+
+function renderAuth(){
+  const m=st.me;
+  const LK=inst()?[['#my','Мои записи'],['#schedule','Составить расписание'],['rec','Смотреть записи'],['#app','Как установить']]:m?[['#my','Мои записи'],['#schedule','Смотреть расписание'],['#app','Как установить']]:[['#my','Мои записи'],['#schedule','Смотреть расписание'],['reg','Как записаться'],['#how','Как это работает'],['#app','Как установить']];
+  $('cta').innerHTML=LK.map(([a,t])=>a==='rec'?`<button class="lk" data-go="recs">${t}</button>`:a==='reg'?`<button class="lk" data-act="reg">${t}</button>`:`<a class="lk" href="${a}">${t}</a>`).join('');
+  const ins=m&&(inst()?m:st.u.find(u=>u.id===m.iid));$('mine').hidden=!ins;
+  if(ins)$('mine').innerHTML=`<div><small>${inst()?'Вы вошли как инструктор':'Ваш инструктор'}</small><b>${esc(ins.name)}</b></div><div><small>Автомобиль</small><b>${ins.car?esc(ins.car):'не указан'}</b></div>${ins.phone?`<div><small>Телефон</small><b>${esc(ins.phone)}</b></div>`:''}`;
+  $('auth').hidden=!!m;$('auth').textContent='Войти';
+  $('who').hidden=!m;if(m)$('who').textContent=inst()?'Инструктор · '+m.name:'Профиль · '+m.name.split(' ')[1];
+  $('hint').textContent=inst()?'Нажмите на день: задайте часы приёма или экзамен, а у свободного часа нажмите «Назначить» и введите логин ученика.':(m&&m.ok==='active'?'Расписание инструктора: '+((st.u.find(u=>u.id===m.iid)||{}).name||'')+'. Синим отмечены ваши занятия. Нажмите на день.':'Нажмите на день, чтобы увидеть свободные окна.');
+}
+const all=()=>{renderCal();renderAdm();renderSheet();renderAuth();renderProfile();renderBell();if(st.me&&cur==='how')go('home');renderNav()};
+
+/* профиль */
+let pt='rec';
+function insBlock(){
+  if(!(st.me&&st.me.owner))return '';
+  return `<h3 style="margin:32px 0 4px">Инструкторы</h3>`+st.u.filter(u=>u.role==='instructor').map(u=>`<div class="rq"><span><b>${esc(u.name)}</b><br><small class="muted">${u.owner?'владелец':'инструктор'}${u.phone?' · '+esc(u.phone):''}${u.car?' · '+esc(u.car):''}</small></span></div>`).join('')+`<div style="margin-top:14px"><button class="btn sm" data-act="addins">Добавить инструктора</button></div>`;
+}
+function renderRecs(){
+  const m=st.me,now=Date.now(),end=b=>new Date(b.date+'T'+b.time).getTime()+36e5,tk=iso(today);
+  $('pe').textContent='Кабинет инструктора';$('pn').textContent='Предстоящие записи';$('pp').textContent=m.name+(m.phone?' · '+m.phone:'');
+  document.querySelector('.tabs').hidden=true;
+  const L=B().filter(b=>day(b.date)>=today).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+  const g=[...new Set(L.map(b=>b.date))];
+  $('pc').innerHTML=`<div class="stats"><div><b>${L.filter(b=>b.date===tk).length}</b><span>записей сегодня</span></div><div><b>${L.length}</b><span>всего предстоящих</span></div><div><b>${st.u.filter(u=>u.role==='client'&&u.iid===m.id&&u.ok==='pending').length}</b><span>новых учеников</span></div></div>`+
+    (g.map(d=>`<h3 style="margin:28px 0 4px">${d===tk?'Сегодня, ':''}${fd(d,{weekday:'long',day:'numeric',month:'long'})}</h3>`+L.filter(b=>b.date===d).map(b=>`<div class="rq"><span><b>${b.time}</b> · ${esc(b.name)} · ${esc(b.phone)}<br><small class="muted">📍 ${esc(b.addr)}${b.chg?' <span class="tag pending">адрес изменён</span>':''}</small></span>`+(end(b)<=now?'<span class="tag">Проведено</span>':`<span class="tag ${b.status}">${SB[b.status]}</span>${b.status==='pending'?`<button class="btn sm" data-act="ok" data-id="${b.id}">Принять</button>`:''}<button class="btn sm ghost" data-act="del" data-id="${b.id}">Отменить</button>`)+'</div>').join('')).join('')||'<p class="muted" style="margin-top:20px">Предстоящих записей нет.</p>')+
+    `${insBlock()}<h3 style="margin:32px 0 4px">Автомобиль</h3><div class="rq"><span><b>${m.car?esc(m.car):'не указан'}</b><br><small class="muted">Видна вашим ученикам на главной странице</small></span><button class="btn sm ghost" data-act="car">Изменить</button></div>`;
+}
+function renderProfile(){
+  const m=st.me;
+  if(!m){if(cur==='profile')go('home');return}
+  if(cur!=='profile')return;
+  if(inst())return renderRecs();
+  $('pe').textContent='Личный кабинет';document.querySelector('.tabs').hidden=false;
+  const ins=st.u.find(u=>u.id===m.iid);$('pn').textContent=m.name;$('pp').textContent=m.phone+' · '+CONFIG.city;
+  document.querySelectorAll('[data-pt]').forEach(b=>b.classList.toggle('on',b.dataset.pt===pt));
+  const now=Date.now(),end=b=>new Date(b.date+'T'+b.time).getTime()+36e5;
+  const mine=st.b.filter(b=>b.uid===m.id).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+  const done=mine.filter(b=>b.status==='confirmed'&&end(b)<=now).reverse(),up=mine.filter(b=>end(b)>now);
+  const row=(b,btn)=>`<div class="rq"><span><b>${fd(b.date)}, ${rng(b.time)}</b><br><small class="muted">📍 ${esc(b.addr)}</small></span>${btn}</div>`;
+  if(pt==='info'){
+    $('pc').innerHTML=`<div class="rq"><span><small class="muted">Логин</small><br><b>${esc(m.name)}</b></span></div><div class="f" style="margin:16px 0;max-width:460px"><small class="muted">Телефон</small><input id="pnum" type="tel" value="${esc(m.phone)}"><div class="acts"><button class="btn sm" data-act="phone">Сохранить телефон</button></div></div><div class="rq"><span><small class="muted">Инструктор</small><br><b>${esc(ins?ins.name:'—')}</b> <small class="muted">${esc(ins?ins.phone:'')}</small></span></div><div class="f" style="margin-top:16px;max-width:460px"><small class="muted">Основной адрес: откуда вас забирать</small><input id="pa" value="${esc(m.main||'')}" placeholder="Например: Свердлова, 4, у музыкальной школы"><div class="acts"><button class="btn sm" data-act="main">Сделать основным</button></div></div>`;
+    return;
+  }
+  $('pc').innerHTML=`<div class="stats"><div><b>${done.length+(m.h0||0)}</b><span>откатано часов</span></div><div><b>${done.length}</b><span>занятий проведено</span></div><div><b>${up.length}</b><span>предстоящих записей</span></div></div><p class="muted" style="margin:-14px 0 24px">Час добавляется автоматически, когда время занятия закончилось.${m.h0?' В счёт входят '+m.h0+' ч., указанные при регистрации.':''}</p><h3 style="margin:0 0 4px">Предстоящие</h3>`+
+    (up.map(b=>row(b,`<button class="btn sm ghost" data-act="addr" data-id="${b.id}">Изменить адрес</button>${cb(b)}`)).join('')||'<p class="muted">Нет предстоящих записей. Вас записывает инструктор.</p>')+
+    `<h3 style="margin:32px 0 4px">История</h3>`+(done.map(b=>row(b,'<span class="tag">Проведено · 1 ч</span>')).join('')||'<p class="muted">Пока нет проведённых занятий.</p>');
+}
+let cur='home';
+const VIEWS=['home','my','schedule','how','app','profile'];
+function renderNav(){
+  const m=st.me,I=inst(),L=[['home','Главная'],['my','Мои записи'],['schedule','Расписание']];
+  if(!m)L.push(['how','Как это работает']);
+  L.push(['app','Как установить']);
+  if(m)L.push(['profile',I?'Записи':'Профиль']);
+  $('nv').innerHTML=L.map(([v,t])=>`<a href="#${v}" class="${v===cur?'on':''}">${t}</a>`).join('');
+}
+function go(v){
+  if(!VIEWS.includes(v))v='home';
+  if(v==='how'&&st.me)v='home';
+  if(v==='profile'&&!st.me)v='home';
+  cur=v;document.body.dataset.v=v;document.body.classList.toggle('vp',v==='profile');
+  if(v==='profile')renderProfile();
+  renderNav();scrollTo(0,0);
+}
+const showProfile=()=>{if(st.me)go('profile')};
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');
+  if(a){e.preventDefault();go(a.getAttribute('href').slice(1));return}
+  const bk=e.target.closest('[data-page]');if(bk){go(bk.dataset.page);return}
+  if(e.target.closest('[data-go="recs"]')){showProfile();return}
+  const t=e.target.closest('[data-pt]');
+  if(t){pt=t.dataset.pt;renderProfile();return}
+  if(e.target.closest('[data-act="logout"]')){e.stopPropagation();$('auth').onclick()}
+},true);
+$('who').onclick=showProfile;
+
+/* вход и регистрация */
+const norm=s=>s.trim().replace(/\s+/g,' ').toLowerCase();
+const err=t=>{$('err').textContent=t};
+function modalUI(){
+  const i=st.role==='instructor';
+  $('rc').classList.toggle('on',!i);$('ri').classList.toggle('on',i);
+  $('mh').textContent=st.reg?'Регистрация':'Вход';$('ph').hidden=!st.reg;$('hh').hidden=!st.reg;$('acw').hidden=!st.reg;$('dd').hidden=true;
+  $('login').textContent=st.reg?'Создать аккаунт':'Войти';$('sw').hidden=i;
+  $('sw').textContent=st.reg?'Уже есть аккаунт? Войти':'Нет аккаунта? Зарегистрироваться';
+  $('pw').placeholder=st.reg?'Придумайте пароль: 8 цифр':'Пароль';$('dm').textContent='';err('');
+}
+function openAuth(msg){st.reg=false;modalUI();$('modal').classList.add('on');if(msg)err(msg);$('lg').focus()}
+const enc=new TextEncoder();
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+const rsalt=()=>hex(crypto.getRandomValues(new Uint8Array(16)));
+async function hpw(p,salt){const k=await crypto.subtle.importKey('raw',enc.encode(p),'PBKDF2',false,['deriveBits']);return hex(await crypto.subtle.deriveBits({name:'PBKDF2',salt:enc.encode(salt),iterations:150000,hash:'SHA-256'},k,256))}
+async function doAuth(){
+  if(!(window.crypto&&crypto.subtle))return err('Откройте сайт по защищённому адресу (https)');
+  const n=$('lg').value.trim().replace(/\s+/g,' '),p=$('pw').value,i=st.role==='instructor';
+  if(st.reg){
+    const ph=$('ph').value.trim();
+    if(n.split(' ').length<2)return err('Введите фамилию и имя через пробел');
+    if(ph.replace(/\D/g,'').length<6)return err('Введите телефон');
+    const hh=$('hh').value.trim();if(!/^\d{1,3}$/.test(hh))return err('Укажите, сколько часов откатали (0, если не ездили)');
+    if(!/^\d{8}$/.test(p))return err('Пароль: ровно 8 цифр');
+    const pi=st.u.find(u=>u.id===st.pick&&norm(u.name)===norm($('ins').value));if(!pi)return err('Выберите инструктора из списка подсказок');
+    if(st.u.some(u=>norm(u.name)===norm(n)))return err('Такой аккаунт уже есть');
+    const salt=rsalt();const u={id:'u'+Date.now(),name:n,phone:ph,salt,hash:await hpw(p,salt),role:'client',iid:pi.id,ok:'pending',main:'',h0:+hh};st.u.push(u);st.me=u;note(pi.id,'Новый ученик: '+n+' выбрал вас инструктором. Подтвердите заявку в панели.');
+  }else{
+    const c=st.u.find(u=>norm(u.name)===norm(n)&&(u.role==='instructor')===i);
+    const u=c&&(await hpw(p,c.salt))===c.hash?c:null;
+    if(!u)return err('Неверный логин или пароль');
+    st.me=u;
+  }
+  save();$('modal').classList.remove('on');$('pw').value='';$('hh').value='';st.slot=null;all();toast(st.reg?'Заявка отправлена инструктору':'Здравствуйте, '+st.me.name.split(' ')[1]+(unr()?'. Новых уведомлений: '+unr():''));if(inst()&&!st.me.car)setTimeout(()=>openCar(true),350);
+}
+$('rc').onclick=()=>{st.role='client';modalUI()};
+$('ri').onclick=()=>{st.role='instructor';st.reg=false;modalUI()};
+$('sw').onclick=()=>{st.reg=!st.reg;modalUI()};
+$('login').onclick=doAuth;
+$('mc').onclick=()=>$('modal').classList.remove('on');
+$('modal').onkeydown=e=>{if(e.key==='Enter')doAuth()};
+$('auth').onclick=()=>{if(st.me)$('lo').classList.add('on');else openAuth()};
+$('lo-y').onclick=()=>{$('lo').classList.remove('on');st.me=null;st.slot=null;save();all();toast('Вы вышли из аккаунта')};
+$('lo-n').onclick=()=>$('lo').classList.remove('on');
+const openCar=first=>{$('cn').value=st.me.car||'';$('cerr').textContent='';$('cl').hidden=!!first;$('car').classList.add('on');$('cn').focus()};
+$('cs').onclick=()=>{const v=$('cn').value.trim();if(v.length<2){$('cerr').textContent='Введите название машины';return}st.cars[st.me.id]=v;st.me.car=v;save();$('car').classList.remove('on');all();toast('Машина сохранена')};
+$('cl').onclick=()=>$('car').classList.remove('on');
+$('car').onkeydown=e=>{if(e.key==='Enter')$('cs').click()};
+
+/* действия */
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.cell[data-d]');
+  if(c&&!c.disabled){st.sel=c.dataset.d;st.slot=null;renderSheet();return}
+  const a=e.target.closest('[data-act]');if(!a)return;
+  const act=a.dataset.act,id=a.dataset.id,k=st.sel;
+  if(act==='pick'){if(!inst())return;st.slot=a.dataset.t;renderSheet()}
+  else if(act==='login')openAuth('Войдите, чтобы продолжить');
+  else if(act==='unpick'){st.slot=null;renderSheet()}
+  else if(act==='type'){st.days[own()+'|'+k]=Object.assign({},cfg(k),{type:a.dataset.v});save();all()}
+  else if(act==='send'){
+    if(!inst())return;
+    const stu=st.u.find(u=>u.role==='client'&&u.iid===st.me.id&&u.ok==='active'&&norm(u.name)===norm($('fn').value));
+    if(!stu){toast('Ученик с таким логином не найден среди ваших');return}
+    const ad=$('fa').value.trim()||stu.main||'';
+    if(ad.length<4){toast('Укажите адрес: у ученика нет основного адреса');return}
+    st.b.push({id:'b'+Date.now(),iid:own(),date:k,time:st.slot,uid:stu.id,name:stu.name,phone:stu.phone,addr:ad,status:'confirmed'});
+    note(stu.id,`Вы записаны: ${fd(k)}, ${rng(st.slot)}. Заберут: ${ad}. Инструктор: ${st.me.name}.`);
+    st.slot=null;save();all();toast('Ученик записан, ему отправлено уведомление');
+  }
+  else if(act==='reg'){st.role='client';st.reg=true;modalUI();$('modal').classList.add('on')}
+  else if(act==='pickins'){const u=st.u.find(z=>z.id===id);if(u){st.pick=id;$('ins').value=u.name;$('dd').hidden=true}}
+  else if(act==='main'){const v=$('pa').value.trim();if(v.length<4){toast('Введите адрес');return}st.me.main=v;save();renderProfile();toast('Основной адрес сохранён')}
+  else if(act==='addins'){if(st.me&&st.me.owner)$('ai1').classList.add('on')}
+  else if(act==='cancel')askCancel(id);
+  else if(act==='addr')openAddr(id);
+  else if(act==='car')openCar();
+  else if(act==='phone'){const v=$('pnum').value.trim();if(v.replace(/\D/g,'').length<6){toast('Введите корректный телефон');return}st.me.phone=v;st.b.forEach(b=>{if(b.uid===st.me.id)b.phone=v});st.x.forEach(x=>{if(x.uid===st.me.id)x.phone=v});save();all();toast('Телефон обновлён')}
+  else if(act==='xbook'){
+    if(!inst())return;
+    const stu=st.u.find(u=>u.role==='client'&&u.iid===st.me.id&&u.ok==='active'&&norm(u.name)===norm($('xn').value));
+    if(!stu){toast('Ученик с таким логином не найден среди ваших');return}
+    const ex=st.x.find(x=>x.date===k&&x.uid===stu.id&&x.iid===own());
+    if(ex)ex.status='accepted';else st.x.push({id:'e'+Date.now(),iid:own(),date:k,uid:stu.id,name:stu.name,phone:stu.phone,note:'Записан инструктором',status:'accepted'});
+    note(stu.id,'Вы записаны на экзамен: '+fd(k)+'.');save();all();toast('Ученик записан на экзамен, ему отправлено уведомление');
+  }
+  else if(act==='xsend'){
+    st.x.push({id:'e'+Date.now(),iid:own(),date:k,uid:st.me.id,name:st.me.name,phone:st.me.phone,note:$('fx').value.trim(),status:'new'});
+    save();all();toast('Заявка на экзамен отправлена');
+  }
+  else{
+    if(act==='ok'){const b=st.b.find(x=>x.id===id);if(b)b.status='confirmed';toast('Запись подтверждена')}
+    else if(act==='del'){const b=st.b.find(x=>x.id===id);if(b&&b.uid)note(b.uid,'Запись отменена: '+fd(b.date)+', '+rng(b.time)+'.');st.b=st.b.filter(x=>x.id!==id);toast('Запись удалена')}
+    else if(act==='xok'||act==='xno'){const x=st.x.find(z=>z.id===id);if(x){x.status=act==='xok'?'accepted':'declined';note(x.uid,act==='xok'?'Вы записаны на экзамен: '+fd(x.date)+'.':'Заявка на экзамен отклонена: '+fd(x.date)+'.')}toast(act==='xok'?'Заявка принята':'Заявка отклонена')}
+    else if(act==='xdel'){st.x=st.x.filter(z=>z.id!==id);toast('Заявка удалена')}
+    else if(act==='uok'||act==='uno'){const u=st.u.find(z=>z.id===id);if(u){u.ok=act==='uok'?'active':'declined';note(u.id,act==='uok'?'Инструктор принял вашу заявку. Скоро он запишет вас на занятие.':'Инструктор не принял вашу заявку.')}toast(act==='uok'?'Ученик принят':'Заявка ученика отклонена')}
+    save();all();
+  }
+});
+document.addEventListener('change',e=>{
+  if(e.target.id!=='hf'&&e.target.id!=='ht')return;
+  const f=+$('hf').value;let t=+$('ht').value;if(t<=f)t=f+1;
+  st.days[own()+'|'+st.sel]=Object.assign({},cfg(st.sel),{from:f,to:t});save();all();
+});
+const closeSheet=()=>{st.sel=null;st.slot=null;renderSheet()};
+$('close').onclick=closeSheet;$('scrim').onclick=closeSheet;
+$('prev').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()-1,1);renderCal()};
+$('next').onclick=()=>{st.view=new Date(st.view.getFullYear(),st.view.getMonth()+1,1);renderCal()};
+$('theme').onclick=()=>{
+  const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark';
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('modal').classList.remove('on');$('lo').classList.remove('on');$('car').classList.remove('on');$('nt').classList.remove('on');$('ad').classList.remove('on');$('cf').classList.remove('on');$('ai1').classList.remove('on');$('ai2').classList.remove('on');closeSheet()}});
+
+/* уведомления: колокольчик внутри сайта (после запуска серверной части добавятся push на экран телефона) */
+function renderBell(){const m=st.me;$('bell').hidden=!m;if(!m)return;const c=unr();$('bd').hidden=!c;$('bd').textContent=c}
+function openNt(){
+  const m=st.me,L=st.n.filter(n=>n.uid===m.id).slice(0,30);
+  $('nl').innerHTML=L.map(n=>`<div class="rq"><span>${esc(n.text)}<br><small class="muted">${new Date(n.t).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small></span>${n.read?'':'<span class="tag">новое</span>'}</div>`).join('')||'<p class="muted">Уведомлений пока нет.</p>';
+  $('nr').hidden=true;$('nt').classList.add('on');L.forEach(n=>n.read=true);save();renderBell();
+}
+$('bell').onclick=openNt;$('nc').onclick=()=>$('nt').classList.remove('on');
+$('nr').onclick=()=>{const now=Date.now(),I=inst(),b=st.b.filter(x=>(I?x.iid===st.me.id:x.uid===st.me.id)&&new Date(x.date+'T'+x.time).getTime()>now).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time))[0];note(st.me.id,b?(I?`Через час у вас занятие с учеником ${b.name}: ${rng(b.time)}. Адрес: ${b.addr}.`:`Напоминание: через час занятие, ${rng(b.time)}. Заберут: ${b.addr}.`):'Напоминание: предстоящих записей пока нет.');save();openNt()};
+function checkRem(){const now=Date.now();st.b.forEach(b=>{if(b.rem||!b.uid)return;const s=new Date(b.date+'T'+b.time).getTime();if(s>now&&s-now<=36e5){b.rem=true;note(b.uid,`Через час занятие: ${rng(b.time)}. Заберут: ${b.addr}.`);note(b.iid,`Через час у вас занятие с учеником ${b.name}: ${rng(b.time)}. Адрес: ${b.addr}.`)}});save();renderBell()}
+$('ai1n').onclick=()=>$('ai1').classList.remove('on');
+$('ai1y').onclick=()=>{$('ai1').classList.remove('on');$('an').value='';$('aph').value='';$('ap').value='';$('aer').textContent='';$('ai2').classList.add('on');$('an').focus()};
+$('ai2n').onclick=()=>$('ai2').classList.remove('on');
+$('ap').oninput=()=>{$('ap').value=$('ap').value.replace(/\D/g,'').slice(0,8)};
+$('ai2').onkeydown=e=>{if(e.key==='Enter')$('ai2y').click()};
+$('ai2y').onclick=async()=>{
+  if(!st.me||!st.me.owner)return;
+  const n=$('an').value.trim().replace(/\s+/g,' '),p=$('ap').value,e=t=>{$('aer').textContent=t};
+  if(n.split(' ').length<2)return e('Введите фамилию и имя через пробел');
+  const ph=$('aph').value.trim();if(ph.replace(/\D/g,'').length<6)return e('Введите телефон инструктора');
+  if(!/^\d{8}$/.test(p))return e('Пароль: ровно 8 цифр');
+  if(st.u.some(u=>norm(u.name)===norm(n)))return e('Такой логин уже есть');
+  if(!(window.crypto&&crypto.subtle))return e('Откройте сайт по защищённому адресу (https)');
+  const salt=rsalt();st.u.push({id:'a'+Date.now(),role:'instructor',name:n,phone:ph,salt,hash:await hpw(p,salt)});
+  save();$('ai2').classList.remove('on');all();toast('Инструктор добавлен: '+n);
+};
+let cfId=null;
+function askCancel(id){const b=st.b.find(x=>x.id===id);if(!b)return;cfId=id;$('cfp').textContent=fd(b.date)+', '+rng(b.time);$('cf').classList.add('on')}
+$('cf-n').onclick=()=>$('cf').classList.remove('on');
+$('cf-y').onclick=()=>{const b=st.b.find(x=>x.id===cfId);$('cf').classList.remove('on');if(!b)return;note(b.iid,`${b.name} отменил(а) занятие: ${fd(b.date)}, ${rng(b.time)}.`);st.b=st.b.filter(x=>x.id!==cfId);save();all();toast('Запись отменена, инструктор уведомлён')};
+let adId=null;
+function openAddr(id){const b=st.b.find(x=>x.id===id);if(!b)return;adId=id;$('adt').textContent=fd(b.date)+', '+rng(b.time);$('adi').value=b.addr;$('aerr').textContent='';$('ad').classList.add('on');$('adi').focus()}
+$('as').onclick=()=>{const v=$('adi').value.trim(),b=st.b.find(x=>x.id===adId);if(v.length<4){$('aerr').textContent='Введите адрес';return}if(!b)return;b.addr=v;b.chg=true;note(b.iid,`${st.me.name} изменил(а) адрес на ${fd(b.date)}, ${rng(b.time)}: ${v}`);save();$('ad').classList.remove('on');all();toast('Адрес изменён, инструктор уведомлён')};
+$('ac').onclick=()=>$('ad').classList.remove('on');
+$('ad').onkeydown=e=>{if(e.key==='Enter')$('as').click()};
+/* как на сервере: проверка раз в час, ровно в :00 по Москве (Москва UTC+3, границы часов совпадают) */
+checkRem();
+setTimeout(()=>{checkRem();setInterval(checkRem,36e5)},36e5-Date.now()%36e5);
+/* без масштабирования */
+['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+document.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault()},{passive:false});
+addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=','0'].includes(e.key))e.preventDefault()});
+/* PWA */
+let ip=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();ip=e;$('inst').hidden=false});
+$('inst').onclick=()=>{if(ip){ip.prompt();ip=null;$('inst').hidden=true}};
+if('serviceWorker' in navigator)addEventListener('load',()=>{try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}});
+/* расписание закрыто, пока нет входа или подтверждения инструктора */
+function gate(){
+  const m=st.me;
+  if(!m)return '<h3>Расписание откроется после входа</h3><p class="muted">Зарегистрируйтесь и выберите своего инструктора или войдите в аккаунт.</p><div class="acts"><button class="btn sm" data-act="login">Войти</button><button class="btn sm ghost" data-act="reg">Регистрация</button></div>';
+  if(inst()||m.ok==='active')return '';
+  const i=st.u.find(u=>u.id===m.iid);
+  return m.ok==='declined'?'<h3>Заявка отклонена</h3><p class="muted">Инструктор не принял заявку. Свяжитесь с ним напрямую'+(i&&i.phone?': '+esc(i.phone):'')+'.</p>':`<h3>Ждём подтверждения</h3><p class="muted">Инструктор ${esc(i?i.name:'')} должен принять вашу заявку, после этого откроется его расписание.</p>`;
+}
+/* подсказки инструкторов при регистрации */
+function sugg(){
+  const q=norm($('ins').value).split(' ').filter(Boolean);
+  const L=st.u.filter(u=>u.role==='instructor'&&q.every(t=>norm(u.name).split(' ').some(w=>w.startsWith(t)||(t.length>=3&&w.startsWith(t.slice(0,-1))))));
+  $('dd').hidden=!L.length;
+  $('dd').innerHTML=L.map(u=>`<button data-act="pickins" data-id="${u.id}">${esc(u.name)}</button>`).join('');
+}
+$('ins').oninput=()=>{st.pick=null;sugg()};$('ins').onfocus=sugg;
+document.querySelectorAll('[data-c]').forEach(e=>e.textContent=CONFIG[e.dataset.c]);
+document.title=CONFIG.brand+' — вождение, '+CONFIG.city;$('fp').hidden=!CONFIG.phone;
+$('pw').oninput=()=>{$('pw').value=$('pw').value.replace(/\D/g,'').slice(0,9)};
+setInterval(()=>{if(document.body.classList.contains('vp'))renderProfile()},30000);
+
+all();
+</script>
+</body>
+</html>
